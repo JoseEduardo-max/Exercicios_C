@@ -9,6 +9,6 @@ int main() {
     y = x << 2;
     printf("x << 2 = %d\n", y);
     y = x >> 2;
-    prinf ("x >> 2 = %d\n", y);
+    printf ("x >> 2 = %d\n", y);
     return 0;
 }
