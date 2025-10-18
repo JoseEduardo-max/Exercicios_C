@@ -1,48 +1,35 @@
-// carlos_fatores.c
 #include <stdio.h>
-#include <stdlib.h>
 
-int main(void)
-{
-    const int primes[5] = {2, 3, 5, 7, 11};
-    int counts[5] = {0, 0, 0, 0, 0};
-    int n = 60;
-    printf("Digite %d fatores (cada um deve ser 2,3,5,7 ou 11):\n", n);
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        scanf("%d", &x);
-        int found = 0;
-        for (int j = 0; j < 5; j++)
-            if (x == primes[j])
-            {
-                counts[j]++;
-                found = 1;
-                break;
-            }
-        if (!found)
-        {
-            printf("Valor invalido %d ignorado\n", x);
+int main() {
+    int fatores[60] = {2,3,5,7,11,2,3,3,5,7,11,2,2,3,7,11,5,7,11,3};
+    int cont[5] = {0}; // para 2, 3, 5, 7, 11
+    int primos[5] = {2, 3, 5, 7, 11};
+    int i, maior = 0, indice_maior = 0, soma = 0;
+
+    // contar frequência
+    for(i = 0; i < 20; i++) {
+        if(fatores[i] == 2) cont[0]++;
+        else if(fatores[i] == 3) cont[1]++;
+        else if(fatores[i] == 5) cont[2]++;
+        else if(fatores[i] == 7) cont[3]++;
+        else if(fatores[i] == 11) cont[4]++;
+    }
+
+    // achar o que mais aparece
+    for(i = 0; i < 5; i++) {
+        if(cont[i] > maior) {
+            maior = cont[i];
+            indice_maior = i;
         }
     }
-    printf("Frequencias:\n");
-    for (int j = 0; j < 5; j++)
-        printf("%d x %d\n", counts[j], primes[j]);
-    int imax = 0;
-    for (int j = 1; j < 5; j++)
-        if (counts[j] > counts[imax])
-            imax = j;
-    printf("Fator com mais frequencia: %d (ocorre %d vezes)\n", primes[imax], counts[imax]);
 
-    long total = 0;
-    printf("Expressao: ");
-    for (int j = 0; j < 5; j++)
-    {
-        if (j)
-            printf(" + ");
-        printf("%dx%d", counts[j], primes[j]);
-        total += (long)counts[j] * primes[j];
+    // soma especial
+    for(i = 0; i < 5; i++) {
+        soma += primos[i] * cont[i];
     }
-    printf("\nResultado da soma: %ld\n", total);
+
+    printf("Fator que mais aparece: %d (%d vezes)\n", primos[indice_maior], maior);
+    printf("Soma especial: %d\n", soma);
+
     return 0;
 }

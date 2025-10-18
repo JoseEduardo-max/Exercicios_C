@@ -1,61 +1,45 @@
-// renata_matriz.c
 #include <stdio.h>
-#include <stdlib.h>
 
-int main(void)
-{
-    const int R = 4, C = 5;
-    double A[R][C];
-    printf("Digite %d valores (4x5):\n", R * C);
-    for (int i = 0; i < R; i++)
-        for (int j = 0; j < C; j++)
-            scanf("%lf", &A[i][j]);
+int main() {
+    float matriz[4][5] = {
+        {80,90,100,85,95},
+        {70,75,80,70,65},
+        {85,88,84,82,83},
+        {100,110,105,115,120}
+    };
+    float media[4];
+    int i, j;
 
-    double mean[R];
-    for (int i = 0; i < R; i++)
-    {
-        double s = 0;
-        for (int j = 0; j < C; j++)
-            s += A[i][j];
-        mean[i] = s / C;
+    // Calcula média de cada grupo
+    for (i = 0; i < 4; i++) {
+        float soma = 0;
+        for (j = 0; j < 5; j++) {
+            soma += matriz[i][j];
+        }
+        media[i] = soma / 5;
     }
-    int idx[R];
-    for (int i = 0; i < R; i++)
-        idx[i] = i;
-    /* ordenar por mean crescente */
-    for (int i = 0; i < R - 1; i++)
-        for (int j = i + 1; j < R; j++)
-            if (mean[idx[i]] > mean[idx[j]])
-            {
-                int t = idx[i];
-                idx[i] = idx[j];
-                idx[j] = t;
+
+    // Mostra médias
+    printf("Médias de cada grupo:\n");
+    for (i = 0; i < 4; i++) {
+        printf("Grupo %d: %.2f\n", i + 1, media[i]);
+    }
+
+    // Ordenar (bubble sort simples)
+    for (i = 0; i < 3; i++) {
+        for (j = i + 1; j < 4; j++) {
+            if (media[i] > media[j]) {
+                float temp = media[i];
+                media[i] = media[j];
+                media[j] = temp;
             }
-
-    double M2[R][C];
-    for (int i = 0; i < R; i++)
-    {
-        int s = idx[i];
-        for (int j = 0; j < C; j++)
-            M2[i][j] = A[s][j];
+        }
     }
 
-    printf("Matriz original:\n");
-    for (int i = 0; i < R; i++)
-    {
-        for (int j = 0; j < C; j++)
-            printf("%.2f ", A[i][j]);
-        printf("\n");
+    printf("\nMédias em ordem crescente:\n");
+    for (i = 0; i < 4; i++) {
+        printf("%.2f ", media[i]);
     }
-    printf("Medias por grupo:\n");
-    for (int i = 0; i < R; i++)
-        printf("grupo %d: %.4f\n", i + 1, mean[i]);
-    printf("Matriz reordenada (media crescente):\n");
-    for (int i = 0; i < R; i++)
-    {
-        for (int j = 0; j < C; j++)
-            printf("%.4f ", M2[i][j]);
-        printf("\n");
-    }
+
     return 0;
 }

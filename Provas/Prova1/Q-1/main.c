@@ -1,59 +1,36 @@
-// paula_contar_substr.c
 #include <stdio.h>
-#include <stdlib.h>
 
-/* implementações simples sem usar string.h */
-size_t my_strlen(const char *s)
-{
-    size_t n = 0;
-    while (s && s[n])
-        n++;
-    return n;
-}
+int main() {
+    FILE *arquivo;
+    char texto[1000];
+    char palavra[100];
+    int i, j, cont = 0, achou;
 
-int count_substr(const char *text, const char *pat)
-{
-    size_t n = my_strlen(text);
-    size_t m = my_strlen(pat);
-    if (m == 0 || n == 0 || m > n)
-        return 0;
-    int count = 0;
-    for (size_t i = 0; i + m <= n; ++i)
-    {
-        int ok = 1;
-        for (size_t j = 0; j < m; ++j)
-        {
-            if (text[i + j] != pat[j])
-            {
-                ok = 0;
+    arquivo = fopen("artigo.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return 1;
+    }
+
+    // lê todo o texto do arquivo
+    fread(texto, sizeof(char), 1000, arquivo);
+    fclose(arquivo);
+
+    printf("Digite a palavra para procurar: ");
+    scanf("%s", palavra);
+
+    // comparar cada posição do texto
+    for (i = 0; texto[i] != '\0'; i++) {
+        achou = 1;
+        for (j = 0; palavra[j] != '\0'; j++) {
+            if (texto[i + j] != palavra[j]) {
+                achou = 0;
                 break;
             }
         }
-        if (ok)
-            count++;
+        if (achou == 1) cont++;
     }
-    return count;
-}
 
-int main(void)
-{
-    char text[1000];
-    char pat[200];
-    printf("Digite o texto (uma linha):\n");
-    if (!fgets(text, sizeof(text), stdin))
-        return 0;
-    /* remove newline */
-    size_t ln = my_strlen(text);
-    if (ln > 0 && text[ln - 1] == '\n')
-        text[ln - 1] = 0;
-    printf("Digite a substring a buscar:\n");
-    if (!fgets(pat, sizeof(pat), stdin))
-        return 0;
-    ln = my_strlen(pat);
-    if (ln > 0 && pat[ln - 1] == '\n')
-        pat[ln - 1] = 0;
-
-    int occ = count_substr(text, pat);
-    printf("Ocorrencias encontradas: %d\n", occ);
+    printf("A palavra apareceu %d vezes.\n", cont);
     return 0;
 }
