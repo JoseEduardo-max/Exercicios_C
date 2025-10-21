@@ -5,7 +5,7 @@ int main() {
     int variacao[5];
     int i;
 
-    variacao[0] = 0; // o primeiro dia não tem variação
+    variacao[0] = 0; 
 
     for(i = 1; i < 5; i++) {
         variacao[i] = consumo[i] - consumo[i-1];

@@ -10,7 +10,6 @@ int main() {
     float media[4];
     int i, j;
 
-    // Calcula média de cada grupo
     for (i = 0; i < 4; i++) {
         float soma = 0;
         for (j = 0; j < 5; j++) {
@@ -19,13 +18,11 @@ int main() {
         media[i] = soma / 5;
     }
 
-    // Mostra médias
     printf("Médias de cada grupo:\n");
     for (i = 0; i < 4; i++) {
         printf("Grupo %d: %.2f\n", i + 1, media[i]);
     }
 
-    // Ordenar (bubble sort simples)
     for (i = 0; i < 3; i++) {
         for (j = i + 1; j < 4; j++) {
             if (media[i] > media[j]) {

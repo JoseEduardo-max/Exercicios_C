@@ -5,7 +5,6 @@ int main() {
     int i, j;
     float temp;
 
-    // Ordenar do maior pro menor
     for(i = 0; i < 10; i++) {
         for(j = i + 1; j < 10; j++) {
             if(precos[i] < precos[j]) {

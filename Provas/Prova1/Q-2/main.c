@@ -8,9 +8,9 @@ int main() {
 
     while (receita[i] != '\0') {
         if (receita[i] == ',') {
-            printf("\n"); // quebra a linha quando achar vírgula
+            printf("\n"); 
         } else {
-            printf("%c", receita[i]); // mostra a letra normal
+            printf("%c", receita[i]); 
         }
         i++;
     }

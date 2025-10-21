@@ -6,7 +6,6 @@ int main() {
     int primos[5] = {2, 3, 5, 7, 11};
     int i, maior = 0, indice_maior = 0, soma = 0;
 
-    // contar frequência
     for(i = 0; i < 20; i++) {
         if(fatores[i] == 2) cont[0]++;
         else if(fatores[i] == 3) cont[1]++;
@@ -15,7 +14,6 @@ int main() {
         else if(fatores[i] == 11) cont[4]++;
     }
 
-    // achar o que mais aparece
     for(i = 0; i < 5; i++) {
         if(cont[i] > maior) {
             maior = cont[i];
@@ -23,7 +21,6 @@ int main() {
         }
     }
 
-    // soma especial
     for(i = 0; i < 5; i++) {
         soma += primos[i] * cont[i];
     }

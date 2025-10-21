@@ -5,7 +5,7 @@ int main() {
     int novo[5];
     int i;
 
-    novo[0] = original[0]; // primeiro valor é igual
+    novo[0] = original[0]; 
 
     for (i = 1; i < 5; i++) {
         novo[i] = original[i] - original[i - 1];

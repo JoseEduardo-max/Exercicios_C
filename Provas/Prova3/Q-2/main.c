@@ -7,14 +7,12 @@ int main() {
     int i, j;
     int somaPrincipal = 0, somaSecundaria = 0;
 
-    // Calcula matriz de vendas
     for (i = 0; i < 3; i++) {
         for (j = 0; j < 3; j++) {
             VENDAS[i][j] = A[i][j] - B[i][j];
         }
     }
 
-    // Soma das diagonais
     for (i = 0; i < 3; i++) {
         somaPrincipal += VENDAS[i][i];
         somaSecundaria += VENDAS[i][2 - i];

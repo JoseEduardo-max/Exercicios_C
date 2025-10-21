@@ -12,14 +12,12 @@ int main() {
         return 1;
     }
 
-    // lê todo o texto do arquivo
     fread(texto, sizeof(char), 1000, arquivo);
     fclose(arquivo);
 
     printf("Digite a palavra para procurar: ");
     scanf("%s", palavra);
 
-    // comparar cada posição do texto
     for (i = 0; texto[i] != '\0'; i++) {
         achou = 1;
         for (j = 0; palavra[j] != '\0'; j++) {
