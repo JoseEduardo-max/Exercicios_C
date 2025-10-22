@@ -8,11 +8,13 @@ int main() {
         {12, 22, 32, 42, 52}  
     };
 
+    //* Normaliza a matriz e calcula a média de cada linha
     float matriz_norm[4][5];
     float media[4];
     float maior = 0;
     int i, j;
 
+    //* Encontra o maior valor na matriz
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 5; j++) {
             if (matriz[i][j] > maior)
@@ -20,12 +22,14 @@ int main() {
         }
     }
 
+    //* Normaliza a matriz
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 5; j++) {
             matriz_norm[i][j] = matriz[i][j] / maior;
         }
     }
 
+    //* Calcula a média de cada linha da matriz normalizada
     for (i = 0; i < 4; i++) {
         float soma = 0;
         for (j = 0; j < 5; j++) {
@@ -34,6 +38,7 @@ int main() {
         media[i] = soma / 5;
     }
 
+    //* Ordena as linhas da matriz normalizada com base na média em ordem decrescente
     for (i = 0; i < 3; i++) {
         for (j = i + 1; j < 4; j++) {
             if (media[i] < media[j]) {
@@ -67,7 +72,7 @@ int main() {
         printf("\n");
     }
 
-    printf("\nMédias normalizadas (em ordem decrescente):\n");
+    printf("\nMedias normalizadas (em ordem decrescente):\n");
     for (i = 0; i < 4; i++) {
         printf("Rio %d: %.2f\n", i + 1, media[i]);
     }
