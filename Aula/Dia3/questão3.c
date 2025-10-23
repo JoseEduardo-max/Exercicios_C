@@ -14,14 +14,14 @@ int main () {
     printf ("Digite a segunda palavra: ");
     scanf("%s", palavra2);
 
-    printf ("Digite a terceiro palavra: ");
+    printf ("Digite a terceira palavra: ");
     scanf("%s", palavra3);
 
     strcpy(frase, palavra1);
     strcat(frase, " ");
-    strcpy(frase, palavra2);
+    strcat(frase, palavra2);
     strcat(frase, " ");
-    strcpy(frase, palavra3);
+    strcat(frase, palavra3);
 
     printf ("\nFrase completa: %s\n", frase);
 
