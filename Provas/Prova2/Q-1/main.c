@@ -5,6 +5,7 @@ int main() {
     int i, j;
     float temp;
 
+    // Ordenar os preços em ordem decrescente (Bubble Sort simples)
     for(i = 0; i < 10; i++) {
         for(j = i + 1; j < 10; j++) {
             if(precos[i] < precos[j]) {
