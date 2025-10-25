@@ -1,18 +1,20 @@
 #include <stdio.h>
 
 int main() {
-    char receita[100] = "sal,Tomate,Queijo,Manjericao";
-    int i = 0;
+    char ingredientes[200];
+    int i;
 
-    printf("Ingredientes separados:\n");
+    printf("Digite os ingredientes separados por vírgula:\n");
+    gets(ingredientes); // lê a linha toda
 
-    while (receita[i] != '\0') {
-        if (receita[i] == ',') {
-            printf("\n"); 
+    printf("\nIngredientes separados:\n");
+
+    for (i = 0; ingredientes[i] != '\0'; i++) {
+        if (ingredientes[i] == ',') {
+            printf("\n"); // pula linha
         } else {
-            printf("%c", receita[i]); 
+            printf("%c", ingredientes[i]); // mostra a letra normal
         }
-        i++;
     }
 
     printf("\n");

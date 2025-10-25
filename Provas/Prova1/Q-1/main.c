@@ -1,34 +1,29 @@
 #include <stdio.h>
 
 int main() {
-    FILE *arquivo;
-    char texto[1000];
-    char palavra[100];
-    int i, j, cont = 0, achou;
+    char texto[200];
+    char palavra[50];
+    int i, j, cont = 0;
 
-    arquivo = fopen("artigo.txt", "r");
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        return 1;
-    }
+    printf("Digite o texto: ");
+    gets(texto); // (simples, mas cuidado: gets é antiga)
+    printf("Digite a palavra que quer buscar: ");
+    gets(palavra);
 
-    fread(texto, sizeof(char), 1000, arquivo);
-    fclose(arquivo);
-
-    printf("Digite a palavra para procurar: ");
-    scanf("%s", palavra);
-
+    // Contar quantas vezes a palavra aparece
     for (i = 0; texto[i] != '\0'; i++) {
-        achou = 1;
+        int igual = 1; // assume que é igual
         for (j = 0; palavra[j] != '\0'; j++) {
             if (texto[i + j] != palavra[j]) {
-                achou = 0;
+                igual = 0;
                 break;
             }
         }
-        if (achou == 1) cont++;
+        if (igual) {
+            cont++;
+        }
     }
 
-    printf("A palavra apareceu %d vezes.\n", cont);
+    printf("A palavra '%s' aparece %d vezes.\n", palavra, cont);
     return 0;
 }
