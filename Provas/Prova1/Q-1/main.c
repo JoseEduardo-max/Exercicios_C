@@ -6,7 +6,7 @@ int main() {
     int i, j, cont = 0;
 
     printf("Digite o texto: ");
-    gets(texto); // (simples, mas cuidado: gets é antiga)
+    gets(texto);
     printf("Digite a palavra que quer buscar: ");
     gets(palavra);
 

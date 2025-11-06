@@ -19,9 +19,6 @@ int main() {
             maior = cont[i];
             indice_maior = i;
         }
-    }
-
-    for(i = 0; i < 5; i++) {
         soma += primos[i] * cont[i];
     }
 
