@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main () {
+    FILE *arq;
+    char nome[20] = "Ricardo";
+    int i = 30;
+    float a = 1.74;
+    int result;
+    arq = fopen ("Arquivo.txt", "w");
+
+    if (arq == NULL) {
+        printf("Problemas na ABERTURA do arquivo\n");
+        system("pause");
+        exit(1);
+    }
+    fprintf(arq, "Nome: %s\n", nome);
+    fprintf(arq, "Idade: %d\n", i);
+    fprintf(arq, "Altura: %.2f\n", a);
+    fclose(arq);
+
+    return 0;
+}
